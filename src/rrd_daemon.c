@@ -3748,9 +3748,8 @@ static void *listen_thread_main (void UNUSED(*args)) /* {{{ */
 
   RRDD_LOG(LOG_INFO, "starting shutdown");
 
-  close_listen_sockets ();
-
   pthread_mutex_lock (&connection_threads_lock);
+  close_listen_sockets();
   while (connection_threads_num > 0)
     pthread_cond_wait(&connection_threads_done, &connection_threads_lock);
   pthread_mutex_unlock (&connection_threads_lock);

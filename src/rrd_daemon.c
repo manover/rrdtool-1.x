@@ -3581,6 +3581,7 @@ static int open_listen_sockets_systemd(void) /* {{{ */
 
     listen_fds[listen_fds_num].fd = sd_fd;
     listen_fds[listen_fds_num].family = sa.sun_family;
+    listen_fds[listen_fds_num].addr = "";
     /* Add permissions to the socket */
     if (default_socket.permissions != 0)
       socket_permission_copy(&listen_fds[listen_fds_num], &default_socket);
